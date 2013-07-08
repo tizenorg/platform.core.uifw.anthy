@@ -1,0 +1,8 @@
+Change-Id: I5e7a08ab59c9c1f97eb4fa7e05c4c8dd30ed1753
+Code-Review+2: Ryan Ware <ware@linux.intel.com>
+Verified+1: Ryan Ware <ware@linux.intel.com>
+Submitted-by: Ryan Ware <ware@linux.intel.com>
+Submitted-at: Mon, 08 Jul 2013 10:06:35 -0700
+Reviewed-on: https://review.tizen.org/gerrit/4565
+Project: platform/core/uifw/anthy
+Branch: refs/heads/tizen

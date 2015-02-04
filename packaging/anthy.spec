@@ -11,11 +11,12 @@ Source1001: 	anthy.manifest
 #
 # URL: http://cannadic.oucrc.org
 # Source1: cannadic-0.93.tar.gz
-License: GPL
-Group: System Environment/Libraries
+License: GPL-2.0+
+Group: Graphics & UI Framework/Input
 BuildRoot: %{_tmppath}/%{name}-root
 
 %description
+A Japanese character input system library.
 
 %prep
 %setup -q

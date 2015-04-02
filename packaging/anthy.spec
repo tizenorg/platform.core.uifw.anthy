@@ -26,6 +26,10 @@ cp %{SOURCE1001} .
 #ln -s ../cannadic-0.93/gcannaf.t mkanthydic
 
 %build
+[ ! -x autogen.sh ] || { rm -f configure ; %autogen ; }
+%reconfigure --disable-static --with-pic
+%__make %{?_smp_mflags}
+
 %configure
 
 make

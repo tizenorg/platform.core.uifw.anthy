@@ -18,11 +18,17 @@ libconvdb_la_SOURCES = convdb.c
 
 INCLUDES = -I$(top_srcdir)/
 anthy_dic_tool_SOURCES = dic-tool.c
+anthy_dic_tool_CFLAGS = -fPIE
 anthy_dic_tool_LDADD = ../src-worddic/libanthydic.la
+anthy_dic_tool_LDFLAGS = -pie
 anthy_agent_SOURCES = agent.c egg.c
+anthy_agent_CFLAGS = -fPIE
 anthy_agent_LDADD = libanthyinput.la ../src-main/libanthy.la ../src-worddic/libanthydic.la
+anthy_agent_LDFLAGS = -pie
 anthy_morphological_analyzer_SOURCES= morph-main.c
+anthy_morphological_analyzer_CFLAGS = -fPIE
 anthy_morphological_analyzer_LDADD = libconvdb.la ../src-main/libanthy.la ../src-worddic/libanthydic.la
+anthy_morphological_analyzer_LDFLAGS = -pie
 
 lib_LTLIBRARIES = libanthyinput.la
 libanthyinput_la_SOURCES = input.c rkconv.c rkhelper.c\

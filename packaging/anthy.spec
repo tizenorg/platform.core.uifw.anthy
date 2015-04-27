@@ -11,7 +11,7 @@ Source1001: 	anthy.manifest
 #
 # URL: http://cannadic.oucrc.org
 # Source1: cannadic-0.93.tar.gz
-License: GPL-2.0+
+License: LGPL-2.1+ and GPL-2.0+
 Group: Graphics & UI Framework/Input
 BuildRoot: %{_tmppath}/%{name}-root
 

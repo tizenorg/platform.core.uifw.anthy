@@ -18,6 +18,15 @@ BuildRoot: %{_tmppath}/%{name}-root
 %description
 A Japanese character input system library.
 
+%package devel
+Summary:        Include Files and Libraries mandatory for Development
+Group:          System/Utilities
+Requires:       %{name} = %{version}-%{release}
+
+%description devel
+This package contains all necessary include files and libraries needed
+to develop applications that require these.
+
 %prep
 %setup -q
 cp %{SOURCE1001} .
@@ -56,10 +65,13 @@ rm -rf ${RPM_BUILD_ROOT}
 %{_sysconfdir}/*
 %{_datadir}/anthy
 #%{_datadir}/emacs/site-lisp/*
-%{_libdir}/pkgconfig/*
 %{_libdir}/libanthy*
-%{_includedir}/*
 #%doc README doc
+
+%files devel
+%defattr(-,root,root)
+%{_libdir}/pkgconfig/*
+%{_includedir}/*
 
 %changelog
 * Thu Jan  3 2002 Yusuke Tabata <yusuke@kmc.gr.jp>

@@ -36,6 +36,8 @@ cp %{SOURCE1001} .
 
 %build
 [ ! -x autogen.sh ] || { rm -f configure ; %autogen ; }
+export CFLAGS+=" -flto "
+export CXXFLAGS+=" -flto "
 %reconfigure --disable-static --with-pic
 %__make %{?_smp_mflags}
 

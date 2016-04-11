@@ -7,6 +7,11 @@
 #include <anthy/xstr.h>
 #include <anthy/dic.h>
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 /** 候補の構成要素 */
 struct cand_elm {
   int nth; /* -1のときは辞書からの割り当てをやっていない */
@@ -86,16 +91,16 @@ struct segment_list {
 };
 
 /* 候補を解放する(無駄に生成してしまったもの等) */
-void anthy_release_cand_ent(struct cand_ent *s);
+EXPORT_API void anthy_release_cand_ent(struct cand_ent *s);
 
 /**/
-struct seg_ent *anthy_get_nth_segment(struct segment_list *c, int );
-void anthy_print_candidate(struct cand_ent *ce);
+EXPORT_API struct seg_ent *anthy_get_nth_segment(struct segment_list *c, int );
+EXPORT_API void anthy_print_candidate(struct cand_ent *ce);
 
 /* compose.c */
 /* 候補を作り出す */
 struct splitter_context;
-void anthy_do_make_candidates(struct splitter_context *sc,
+EXPORT_API void anthy_do_make_candidates(struct splitter_context *sc,
 			      struct seg_ent *e, int is_reverse);
 
 #endif

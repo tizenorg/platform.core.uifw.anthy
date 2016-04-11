@@ -2,6 +2,11 @@
 #ifndef _segclass_h_included_
 #define _segclass_h_included_
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 enum dep_class {
   /* 付属語なし */
   DEP_NONE,
@@ -43,8 +48,8 @@ enum seg_class {
   SEG_SIZE
 };
 
-const char* anthy_seg_class_name(enum seg_class sc);
-const char* anthy_seg_class_sym(enum seg_class sc);
-enum seg_class anthy_seg_class_by_name(const char *name);
+EXPORT_API const char* anthy_seg_class_name(enum seg_class sc);
+EXPORT_API const char* anthy_seg_class_sym(enum seg_class sc);
+EXPORT_API enum seg_class anthy_seg_class_by_name(const char *name);
 
 #endif

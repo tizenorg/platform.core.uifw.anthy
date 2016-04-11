@@ -3,6 +3,11 @@
 
 #include "xstr.h"
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 struct prediction_t {
   int timestamp;
   /* 読み */
@@ -12,7 +17,7 @@ struct prediction_t {
 };
 
 /* 予測された文字列を格納する */
-int anthy_traverse_record_for_prediction(xstr*, struct prediction_t*);
+EXPORT_API int anthy_traverse_record_for_prediction(xstr*, struct prediction_t*);
 
 
 #endif

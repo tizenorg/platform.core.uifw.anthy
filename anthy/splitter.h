@@ -14,6 +14,11 @@
 /** splitterのコンテキスト．
  * 最初の境界設定からanthy_contextの解放まで有効
  */
+ 
+ #ifndef EXPORT_API
+ #define EXPORT_API
+ #endif // EXPORT_API
+ 
 struct splitter_context {
   /** splitter内部で使用する構造体 */
   struct word_split_info_cache *word_split_info;
@@ -102,25 +107,25 @@ struct meta_word {
   struct meta_word *next;
 };
 
-int anthy_init_splitter(void);
-void anthy_quit_splitter(void);
+EXPORT_API int anthy_init_splitter(void);
+EXPORT_API void anthy_quit_splitter(void);
 
-void anthy_init_split_context(xstr *xs, struct splitter_context *, int is_reverse);
+EXPORT_API void anthy_init_split_context(xstr *xs, struct splitter_context *, int is_reverse);
 /*
  * mark_border(context, l1, l2, r1);
  * l1とr1の間の文節を検出する、ただしl1とl2の間は境界にしない。
  */
-void anthy_mark_border(struct splitter_context *, int from, int from2, int to);
-void anthy_commit_border(struct splitter_context *, int nr,
+EXPORT_API void anthy_mark_border(struct splitter_context *, int from, int from2, int to);
+EXPORT_API void anthy_commit_border(struct splitter_context *, int nr,
 		   struct meta_word **mw, int *len);
-void anthy_release_split_context(struct splitter_context *c);
+EXPORT_API void anthy_release_split_context(struct splitter_context *c);
 
 /* 作り出した文節の情報を取得する */
-int anthy_get_nr_metaword(struct splitter_context *, int from, int len);
-struct meta_word *anthy_get_nth_metaword(struct splitter_context *,
+EXPORT_API int anthy_get_nr_metaword(struct splitter_context *, int from, int len);
+EXPORT_API struct meta_word *anthy_get_nth_metaword(struct splitter_context *,
 					 int from, int len, int nth);
 /**/
-int anthy_dep_word_hash(xstr *xs);
+EXPORT_API int anthy_dep_word_hash(xstr *xs);
 
 
 #endif

@@ -18,29 +18,34 @@ extern "C" {
 /* 辞書が存在しない */
 #define ANTHY_DIC_UTIL_INVALID -3
 
-void anthy_dic_util_init(void);
-void anthy_dic_util_quit(void);
-void anthy_dic_util_set_personality(const char *);
-const char *anthy_dic_util_get_anthydir(void);
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
+EXPORT_API void anthy_dic_util_init(void);
+EXPORT_API void anthy_dic_util_quit(void);
+EXPORT_API void anthy_dic_util_set_personality(const char *);
+EXPORT_API const char *anthy_dic_util_get_anthydir(void);
 #define HAS_ANTHY_DICUTIL_SET_ENCODING
-int anthy_dic_util_set_encoding(int );
+EXPORT_API int anthy_dic_util_set_encoding(int );
 
-void anthy_priv_dic_delete(void);
-int anthy_priv_dic_select_first_entry(void);
-int anthy_priv_dic_select_next_entry(void);
-int anthy_priv_dic_select_entry(const char *);/* not implemented */
+EXPORT_API void anthy_priv_dic_delete(void);
+EXPORT_API int anthy_priv_dic_select_first_entry(void);
+EXPORT_API int anthy_priv_dic_select_next_entry(void);
+EXPORT_API int anthy_priv_dic_select_entry(const char *);/* not implemented */
 
-char *anthy_priv_dic_get_index(char *buf, int len);
-int anthy_priv_dic_get_freq(void);
-char *anthy_priv_dic_get_wtype(char *buf, int len);
-char *anthy_priv_dic_get_word(char *buf, int len);
+EXPORT_API char *anthy_priv_dic_get_index(char *buf, int len);
+EXPORT_API int anthy_priv_dic_get_freq(void);
+EXPORT_API char *anthy_priv_dic_get_wtype(char *buf, int len);
+EXPORT_API char *anthy_priv_dic_get_word(char *buf, int len);
 
-int anthy_priv_dic_add_entry(const char *yomi, const char *word,
+EXPORT_API int anthy_priv_dic_add_entry(const char *yomi, const char *word,
 			     const char *wt, int freq);
 
 /* experimental and unstable /usr/share/dict/wordsから単語を探す */
 #define HAS_ANTHY_DIC_SEARCH_WORDS_FILE
-char *anthy_dic_search_words_file(const char *word);
+EXPORT_API char *anthy_dic_search_words_file(const char *word);
 
 #ifdef __cplusplus
 }

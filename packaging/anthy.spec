@@ -36,8 +36,8 @@ cp %{SOURCE1001} .
 
 %build
 [ ! -x autogen.sh ] || { rm -f configure ; %autogen ; }
-export CFLAGS+=" -flto "
-export CXXFLAGS+=" -flto "
+export CFLAGS+=" -flto -fvisibility=hidden -DEXPORT_API=\"__attribute__((visibility(\\\"default\\\")))\" "
+export CXXFLAGS+=" -flto -fvisibility=hidden -DEXPORT_API=\"__attribute__((visibility(\\\"default\\\")))\" "
 %reconfigure --disable-static --with-pic
 %__make %{?_smp_mflags}
 

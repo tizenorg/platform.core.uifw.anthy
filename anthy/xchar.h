@@ -150,16 +150,21 @@
 #define UCS_GETA 0x3013
 #define EUC_GETA 0xa2ae
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 /**/
-int anthy_xchar_to_num(xchar );
-xchar anthy_xchar_wide_num_to_num(xchar);
+EXPORT_API int anthy_xchar_to_num(xchar );
+EXPORT_API xchar anthy_xchar_wide_num_to_num(xchar);
 /**/
 struct half_kana_table {
   const int src;
   const int dst;
   const int mod;
 };
-const struct half_kana_table *anthy_find_half_kana(xchar xc);
-xchar anthy_lookup_half_wide(xchar xc);
+EXPORT_API const struct half_kana_table *anthy_find_half_kana(xchar xc);
+EXPORT_API xchar anthy_lookup_half_wide(xchar xc);
 
 #endif

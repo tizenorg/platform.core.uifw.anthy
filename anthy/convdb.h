@@ -16,6 +16,11 @@
 #define CONV_CAND_MISS 2
 #define CONV_INVALID 4
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 /* 変換前と変換後の文字列、結果に対する判定を格納する */
 struct conv_res {
   /* 検索のキー */
@@ -50,12 +55,12 @@ struct res_db {
   struct res_stat res, split;
 };
 
-struct res_db *create_db(void);
-void read_db(struct res_db *db, const char *fn);
-struct conv_res *find_conv_res(struct res_db *db, anthy_context_t ac,
+EXPORT_API struct res_db *create_db(void);
+EXPORT_API void read_db(struct res_db *db, const char *fn);
+EXPORT_API struct conv_res *find_conv_res(struct res_db *db, anthy_context_t ac,
 			       const char *src, int conv);
-void print_size_miss_segment_info(anthy_context_t ac, int nth);
-void print_cand_miss_segment_info(anthy_context_t ac, int nth);
-void print_context_info(anthy_context_t ac, struct conv_res *cr);
+EXPORT_API void print_size_miss_segment_info(anthy_context_t ac, int nth);
+EXPORT_API void print_cand_miss_segment_info(anthy_context_t ac, int nth);
+EXPORT_API void print_context_info(anthy_context_t ac, struct conv_res *cr);
 
 #endif

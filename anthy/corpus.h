@@ -4,6 +4,11 @@
 
 #include <stdio.h>
 
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
+
 struct corpus;
 
 #define ELM_NONE 0
@@ -15,11 +20,11 @@ struct corpus;
 #define CORPUS_KEY_MASK 0x0fffffff
 
 /* コーパス構築用の関数 */
-struct corpus *corpus_new(void);
-void corpus_push_back(struct corpus *c, int *val, int nr, int flags);
-void corpus_build(struct corpus *c);
-void corpus_dump(struct corpus *c);
-void corpus_write_bucket(FILE *fp, struct corpus *c);
-void corpus_write_array(FILE *fp, struct corpus *c);
+EXPORT_API struct corpus *corpus_new(void);
+EXPORT_API void corpus_push_back(struct corpus *c, int *val, int nr, int flags);
+EXPORT_API void corpus_build(struct corpus *c);
+EXPORT_API void corpus_dump(struct corpus *c);
+EXPORT_API void corpus_write_bucket(FILE *fp, struct corpus *c);
+EXPORT_API void corpus_write_array(FILE *fp, struct corpus *c);
 
 #endif

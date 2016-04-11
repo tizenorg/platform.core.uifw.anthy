@@ -175,6 +175,11 @@
 #define CC_BITS 5
 #define CT_BITS 4
 #define WF_BITS 4
+
+#ifndef EXPORT_API
+#define EXPORT_API
+#endif // EXPORT_API
+
 /* 29bits */
 
 /** 品詞 */
@@ -190,43 +195,43 @@ struct wtype{
 typedef struct wtype wtype_t;
 
 /** anthy_wtype_include(名詞、人名)は真、逆は偽 */
-int anthy_wtype_include(wtype_t haystack, wtype_t needle);
+EXPORT_API int anthy_wtype_include(wtype_t haystack, wtype_t needle);
 
 /* 二つの品詞が完全に一致するかどうかを見る */
-int anthy_wtype_equal(wtype_t lhs, wtype_t rhs);
+EXPORT_API int anthy_wtype_equal(wtype_t lhs, wtype_t rhs);
 
-void anthy_print_wtype(wtype_t w);
+EXPORT_API void anthy_print_wtype(wtype_t w);
 /* 辞書ファイル中の名前から品詞を得る(関数名が悪い) */
-const char *anthy_type_to_wtype(const char *name, wtype_t *w);
+EXPORT_API const char *anthy_type_to_wtype(const char *name, wtype_t *w);
 /* 品詞の名前から品詞を得る */
-wtype_t anthy_init_wtype_by_name(const char *str);
+EXPORT_API wtype_t anthy_init_wtype_by_name(const char *str);
 
-int anthy_wtype_get_pos(wtype_t w);
-int anthy_wtype_get_cc(wtype_t w);
-int anthy_wtype_get_ct(wtype_t w);
-int anthy_wtype_get_cos(wtype_t w);
-int anthy_wtype_get_scos(wtype_t w);
-int anthy_wtype_get_wf(wtype_t w);
+EXPORT_API int anthy_wtype_get_pos(wtype_t w);
+EXPORT_API int anthy_wtype_get_cc(wtype_t w);
+EXPORT_API int anthy_wtype_get_ct(wtype_t w);
+EXPORT_API int anthy_wtype_get_cos(wtype_t w);
+EXPORT_API int anthy_wtype_get_scos(wtype_t w);
+EXPORT_API int anthy_wtype_get_wf(wtype_t w);
 
 /* フラグの取得 */
-int anthy_wtype_get_indep(wtype_t w);
-int anthy_wtype_get_sv(wtype_t w);
-int anthy_wtype_get_meisi(wtype_t w);
-int anthy_wtype_get_ajv(wtype_t w);
+EXPORT_API int anthy_wtype_get_indep(wtype_t w);
+EXPORT_API int anthy_wtype_get_sv(wtype_t w);
+EXPORT_API int anthy_wtype_get_meisi(wtype_t w);
+EXPORT_API int anthy_wtype_get_ajv(wtype_t w);
 
-wtype_t anthy_get_wtype(int pos, int cos, int scos, int cc, int ct, int wf);
-wtype_t anthy_get_wtype_with_ct(wtype_t base, int ct);
+EXPORT_API wtype_t anthy_get_wtype(int pos, int cos, int scos, int cc, int ct, int wf);
+EXPORT_API wtype_t anthy_get_wtype_with_ct(wtype_t base, int ct);
 
-void anthy_wtype_set_pos(wtype_t *w, int pos);
-void anthy_wtype_set_cc(wtype_t *w, int cc);
-void anthy_wtype_set_ct(wtype_t *w, int ct);
-void anthy_wtype_set_cos(wtype_t *w, int cs);
-void anthy_wtype_set_scos(wtype_t *w, int scos);
-void anthy_wtype_set_dep(wtype_t *w, int isDep);
+EXPORT_API void anthy_wtype_set_pos(wtype_t *w, int pos);
+EXPORT_API void anthy_wtype_set_cc(wtype_t *w, int cc);
+EXPORT_API void anthy_wtype_set_ct(wtype_t *w, int ct);
+EXPORT_API void anthy_wtype_set_cos(wtype_t *w, int cs);
+EXPORT_API void anthy_wtype_set_scos(wtype_t *w, int scos);
+EXPORT_API void anthy_wtype_set_dep(wtype_t *w, int isDep);
 
-void anthy_init_wtypes(void);
+EXPORT_API void anthy_init_wtypes(void);
 
-extern wtype_t anthy_wt_all;/* すべてにマッチする自立語 */
-extern wtype_t anthy_wt_none;/* 品詞無しPOS_INVAL */
+EXPORT_API extern wtype_t anthy_wt_all;/* すべてにマッチする自立語 */
+EXPORT_API extern wtype_t anthy_wt_none;/* 品詞無しPOS_INVAL */
 
 #endif

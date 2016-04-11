@@ -21,7 +21,12 @@
  * 失敗の時にはカレントsectionは無効になる
  * 常にカレントrowは無効になる
  */
-int anthy_select_section(const char *name, int create_if_not_exist);
+ 
+ #ifndef EXPORT_API
+ #define EXPORT_API
+ #endif // EXPORT_API
+ 
+EXPORT_API int anthy_select_section(const char *name, int create_if_not_exist);
 
 /*
  * カレントsection中からnameのrowをカレントrowにする
@@ -30,7 +35,7 @@ int anthy_select_section(const char *name, int create_if_not_exist);
  * 返り値: 成功 0 、失敗 -1
  * 失敗の時にはカレントrowは無効になる
  */
-int anthy_select_row(xstr *name, int create_if_not_exist);
+EXPORT_API int anthy_select_row(xstr *name, int create_if_not_exist);
 
 /*
  * カレントsection中からnameに最も長い文字数でマッチする
@@ -39,14 +44,14 @@ int anthy_select_row(xstr *name, int create_if_not_exist);
  * 返り値: 成功 0 、失敗 -1
  * 失敗の時にはにカレントrowは無効になる
  */
-int anthy_select_longest_row(xstr *name);
+EXPORT_API int anthy_select_longest_row(xstr *name);
 
 /*
  * カレントsection中の最初のrowをカレントrowにする
  * 返り値: 成功 0 、失敗 -1
  * 失敗の時にはカレントrowは無効になる
  */
-int anthy_select_first_row(void);
+EXPORT_API int anthy_select_first_row(void);
 
 /*
  * カレントrowの次のrowをカレントrowにする
@@ -54,45 +59,45 @@ int anthy_select_first_row(void);
  * カレントrowに対する変更があっても、ファイルには保存されない
  * 失敗の時にはカレントrowは無効になる
  */
-int anthy_select_next_row(void);
+EXPORT_API int anthy_select_next_row(void);
 
 /*
  * カレントsectionを解放する
  * 常にカレントsection,rowは無効になる
  */
-void anthy_release_section(void);
+EXPORT_API void anthy_release_section(void);
 
 /*
  * カレントsectionのLRUリストの先頭からcount個以降を解放する
  * 常にカレントrowは無効になる
  */
-void anthy_truncate_section(int count);
+EXPORT_API void anthy_truncate_section(int count);
 
 
 /* 現在のrowに対する操作 */
-xstr *anthy_get_index_xstr(void);
-int anthy_get_nr_values(void);
-int anthy_get_nth_value(int );
-xstr *anthy_get_nth_xstr(int );/* internされているxstrが返される */
+EXPORT_API xstr *anthy_get_index_xstr(void);
+EXPORT_API int anthy_get_nr_values(void);
+EXPORT_API int anthy_get_nth_value(int );
+EXPORT_API xstr *anthy_get_nth_xstr(int );/* internされているxstrが返される */
 
-void anthy_set_nth_value(int nth, int val);
-void anthy_set_nth_xstr(int nth, xstr *xs);/* 内部でコピーされる */
+EXPORT_API void anthy_set_nth_value(int nth, int val);
+EXPORT_API void anthy_set_nth_xstr(int nth, xstr *xs);/* 内部でコピーされる */
 
-void anthy_truncate_row(int nth);/* To Be Implemented */
+EXPORT_API void anthy_truncate_row(int nth);/* To Be Implemented */
 
 /*
  * カレントrowを解放する。終了後のカレントrowは不定
  * 常にカレントrowは無効になる
  */
-void anthy_release_row(void);
+EXPORT_API void anthy_release_row(void);
 
 /*
  * カレントrowをLRUの先頭の方へもってくる
  * 常にカレントrowは無効になる
  */
-int anthy_mark_row_used(void);
+EXPORT_API int anthy_mark_row_used(void);
 
 
-void anthy_reload_record(void);
+EXPORT_API void anthy_reload_record(void);
 
 #endif
